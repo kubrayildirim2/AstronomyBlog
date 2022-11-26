@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{mainLayout.html}">
+
+<th:block layout:fragment="content">
+    <!-- <script th:src="@{/js/login.js}"></script> -->
+    <div class="register-form">
+        <div class="register-title-wrapper">
+            <span class="register-title">Register</span>
+        </div>
+        <form th:action="@{/register}" method="POST" th:object="${newUser}">
+            <div class="register-form-container">
+                <div class="input-item">
+                    <span class="input-title">First Name</span>
+                    <input class="form-control validation-item" th:field="*{firstName}" type="text" />
+                    <span class="error-msg">Please enter valid first name</span>
+                </div>
+                <div class="input-item">
+                    <span class="input-title">Last Name</span>
+                    <input class="form-control validation-item" th:field="*{lastName}" type="text" />
+                    <span class="error-msg">Please enter valid last name</span>
+                </div>
+                <div class="input-item">
+                    <span class="input-title">Username</span>
+                    <input class="form-control validation-item" th:field="*{userName}" type="text" />
+                    <span class="error-msg">Please enter valid username</span>
+                </div>
+                <div class="input-item">
+                    <span class="input-title">Password</span>
+                    <input class="form-control validation-item" th:field="*{password}" type="password" />
+                    <span class="error-msg">Please enter valid password</span>
+                </div>
+                <div class="input-item">
+                    <span class="input-title">Email</span>
+                    <input class="form-control validation-item" th:field="*{email}" type="text" />
+                    <span class="error-msg">Please enter valid email</span>
+                </div>
+                <button class="register-button btn btn-success" type="submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</th:block>
