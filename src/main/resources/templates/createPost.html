@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en"
+      layout:decorate="~{cmsLayout.html}"
+>
+
+
+<th:block layout:fragment="cmsContent">
+
+  <form method="post" th:action="@{/cms/create}" th:object="${newPost}">
+
+    <h5>
+      TITLE
+    </h5>
+    <input type="text" th:field="*{title}" style="width: 70%">
+
+    <h5>
+      CONTENT
+    </h5>
+    <textarea th:field="*{body}" style="width: 70%; height: 250px" />
+    <div>
+      <button type="submit" class="btn btn-success"> Create Post </button>
+    </div>
+
+  </form>
+
+</th:block>
+
+
+
+</html>

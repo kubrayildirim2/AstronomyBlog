@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en"
+      layout:decorate="~{cmsLayout.html}"
+>
+
+
+<th:block layout:fragment="cmsContent">
+
+  <div th:unless="${#lists.isEmpty(allPosts)}">
+
+    <table class="table table-dark">
+
+      <thead>
+      <tr>
+        <td>id</td>
+        <td>title</td>
+        <td>created at</td>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="post: ${allPosts}">
+        <td th:text="${post.id}"></td>
+        <td th:text="${post.title}"></td>
+        <td th:text="${post.dateCreated}"></td>
+
+      </tr>
+      </tbody>
+
+
+    </table>
+
+  </div>
+
+</th:block>
+
+
+
+</html>

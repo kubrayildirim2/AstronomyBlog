@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en"
+      layout:decorate="~{mainLayout.html}"
+>
+
+
+<th:block layout:fragment="content">
+  <div class="cmsContainer">
+
+    <h2> CMS PANEL </h2>
+
+    <a th:href="@{/cms/create}">
+      <button class="btn btn-success">Create a new post</button>
+    </a>
+
+    <a th:href="@{/cms/showpost}">
+      <button class="btn btn-success">Show all posts</button>
+    </a>
+
+    <div class="cmsMainContent">
+
+      <th:block layout:fragment="cmsContent"></th:block>
+
+    </div>
+
+  </div>
+</th:block>
+
+
+
+</html>
