@@ -23,7 +23,17 @@
       <tr th:each="post: ${allPosts}">
         <td th:text="${post.id}"></td>
         <td th:text="${post.title}"></td>
-        <td th:text="${post.dateCreated}"></td>
+        <td th:text="${#temporals.format(post.dateCreated, 'dd/MM/yyyy HH:mm')}"></td>
+        <td>
+          <a th:href="@{/cms/delete/__${post.getId()}__}">
+            <button>Delete</button>
+          </a>
+        </td>
+        <td>
+          <a th:href="@{/cms/edit/__${post.getId()}__}">
+            <button>Edit</button>
+          </a>
+        </td>
 
       </tr>
       </tbody>

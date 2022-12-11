@@ -12,6 +12,14 @@
             <i><span sec:authentication="principal.authorities">Roles</span></i>
         </div>
     </h2>
+    <div>
+        <div th:each="post:${allPosts}">
+
+            <h4 th:text="${post.getTitle()}"></h4>
+            <p th:text="${post.description}"></p>
+
+        </div>
+    </div>
 </th:block>
 
 

@@ -17,6 +17,12 @@ public class Post {
     @Column(columnDefinition = "TEXT")
     private String body;
 
+    @Column
+    private String description;
+
+    @Column(nullable = true, length = 64)
+    private String image;
+
     private LocalDateTime dateCreated;
 
     public Post() {
@@ -44,6 +50,22 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDateTime getDateCreated() {

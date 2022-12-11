@@ -7,12 +7,19 @@
 
 <th:block layout:fragment="cmsContent">
 
-  <form method="post" th:action="@{/cms/create}" th:object="${newPost}">
+  <form enctype="multipart/form-data" method="post" th:action="@{/cms/create}" th:object="${newPost}">
 
     <h5>
       TITLE
     </h5>
     <input type="text" th:field="*{title}" style="width: 70%">
+
+    <input type="file" name="image1" accept="image/png, image/jpeg">
+
+    <h5>
+      DESCRIPTION
+    </h5>
+    <textarea th:field="*{description}" style="width: 70%; height: 100px" />
 
     <h5>
       CONTENT
@@ -21,6 +28,9 @@
     <div>
       <button type="submit" class="btn btn-success"> Create Post </button>
     </div>
+
+    <input type="hidden" th:field="*{id}">
+    <input type="hidden" th:field="*{dateCreated}">
 
   </form>
 
