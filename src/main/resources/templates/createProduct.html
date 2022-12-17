@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en"
+      layout:decorate="~{cmsLayout.html}"
+>
+
+
+<th:block layout:fragment="cmsContent">
+
+  <form enctype="multipart/form-data" method="post" th:action="@{/cms/createProduct}" th:object="${newProduct}">
+
+    <h5>
+      TITLE
+    </h5>
+    <input type="text" th:field="*{name}" style="width: 70%">
+
+    <input type="file" name="image1" accept="image/png, image/jpeg">
+
+    <h5>
+      DESCRIPTION
+    </h5>
+    <textarea th:field="*{description}" style="width: 70%; height: 100px" />
+
+    <h5>
+      PRICE
+    </h5>
+    <input th:field="*{price}" style="width: 70%;" />
+    <div>
+      <button th:text="${isEdit==true?'Edit Product':'Create Product'}" type="submit" class="btn btn-success"> Create Product </button>
+    </div>
+
+    <input type="hidden" th:field="*{id}">
+
+  </form>
+
+</th:block>
+
+
+
+</html>

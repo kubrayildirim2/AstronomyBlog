@@ -12,10 +12,13 @@
             <i><span sec:authentication="principal.authorities">Roles</span></i>
         </div>
     </h2>
+
+    <a target="_blank" href="https://apod.nasa.gov/apod/astropix.html?"> <button>Astronomy Picture Of The Day</button></a>
     <div>
         <div th:each="post:${allPosts}">
 
             <h4 th:text="${post.getTitle()}"></h4>
+            <img th:src="@{${post.getPhotosImagePath()}}">
             <p th:text="${post.description}"></p>
 
         </div>

@@ -18,6 +18,14 @@
       <button class="btn btn-success">Show all posts</button>
     </a>
 
+    <a th:href="@{/cms/createProduct}">
+      <button class="btn btn-success">Create a new product</button>
+    </a>
+
+    <a th:href="@{/cms/showProducts}">
+      <button class="btn btn-success">Show all products</button>
+    </a>
+
     <div class="cmsMainContent">
 
       <th:block layout:fragment="cmsContent"></th:block>

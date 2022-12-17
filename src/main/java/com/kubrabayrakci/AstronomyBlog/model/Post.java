@@ -28,6 +28,13 @@ public class Post {
     public Post() {
     }
 
+    @Transient
+    public String getPhotosImagePath() {
+        if (image == null || id == null) return null;
+
+        return "/post-image/" + id + "/" + image;
+    }
+
     public Long getId() {
         return id;
     }
