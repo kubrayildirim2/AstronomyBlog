@@ -3,13 +3,7 @@ body, html {
 }
 
 body {
-    background: lemonchiffon;
-    /*
-    background-image: url("/media/galaxy-icon.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    */
+    /* background: black; */
 }
 
 
@@ -39,6 +33,8 @@ body {
     align-items: center;
 }
 .title-middle {
+    font-size: 22px;
+    text-align: center;
     color: black;
 }
 .title-middle:hover {
@@ -54,6 +50,14 @@ body {
 .sign-in-link {
     color: black;
 }
+.card-deck {
+    row-gap: 4rem;
+}
+.shopping-item {
+    min-width: 13rem;
+    max-width: 13rem;
+}
+
 .sign-in-link:hover {
     color: black;
     text-decoration: none;
@@ -61,7 +65,60 @@ body {
 
 .main-content {
     display: flex;
+    flex-direction: row;
+    padding: 2rem;
     min-height: calc(100vh - 147.5px);
+}
+
+.read-post-content {
+    padding: 5% 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+.read-post-content .post-image {
+    margin-bottom: 2rem;
+}
+.read-post-content .post-body {
+    white-space: break-spaces;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.home-extra-container {
+    order: 2;
+    flex: 1;
+    display: flex;
+    justify-content: end;
+}
+
+.cms-nav {
+    margin-bottom: 1rem;
+}
+
+.read-post-content .post-title {
+
+    margin-bottom: 2rem;
+}
+.post-list .post-image {
+    width: 100%;
+}
+
+.post-list hr {
+
+}
+.post-image {
+    max-width: 100%;
+}
+.post-description {
+
+}
+
+.post-date {
+    font-size: 13px;
+    color: gray;
+    font-weight: bold;
 }
 
 .footer {

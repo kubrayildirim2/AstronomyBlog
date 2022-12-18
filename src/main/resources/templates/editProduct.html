@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en"
+      layout:decorate="~{cmsLayout.html}"
+>
+
+
+<th:block layout:fragment="cmsContent">
+
+  <script th:inline="javascript" th:src="@{/js/editProduct.js}"></script>
+
+  <form enctype="multipart/form-data" method="post" th:action="@{/cms/editProduct}" th:object="${editedProduct}">
+
+    <h5>Product Title</h5>
+    <input type="text" th:field="*{name}" style="width: 70%">
+
+    <h5>Product Image</h5>
+    <input type="file" name="image1" id="imgInput" accept="image/png, image/jpeg">
+    <th:block th:if="${editedProduct.getImage() != null}"
+              th:with="base64=${T(com.kubrabayrakci.AstronomyBlog.util.ImageUtility).getBase64ImageStringFromCompressedByte(editedProduct.getImage())}">
+      <img class="product-image original" id="blah" style="width: 200px" th:src="${'data:image/jpeg;charset=utf-8;base64,' + base64}">
+      <span id="remove-image" style="cursor: pointer;">Remove Image</span>
+    </th:block>
+    <th:block th:if="${editedProduct.getImage() == null}">
+      <img class="product-image" id="blah" style="width: 200px">
+    </th:block>
+
+    <h5>Product Description</h5>
+    <textarea th:field="*{description}" style="width: 70%; height: 100px" />
+
+    <h5>Product Price</h5>
+    <input th:field="*{price}" style="width: 70%;" />
+
+    <div>
+      <button type="submit" class="btn btn-success">Edit Product</button>
+    </div>
+
+    <input type="hidden" th:field="*{id}">
+
+  </form>
+
+</th:block>
+
+
+
+</html>

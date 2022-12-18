@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en"
+      layout:decorate="~{cmsLayout.html}"
+>
+
+
+<th:block layout:fragment="cmsContent">
+  <script th:inline="javascript" th:src="@{/js/editPost.js}"></script>
+
+  <form id="edit-form" enctype="multipart/form-data" method="post" th:action="@{/cms/editPost}" th:object="${editedPost}">
+
+    <h5>Title</h5>
+    <input type="text" th:field="*{title}" style="width: 70%">
+
+    <h5>Post Image</h5>
+    <input type="file" name="image1" id="imgInput" accept="image/png, image/jpeg">
+    <th:block th:if="${editedPost.getImage() != null}"
+              th:with="base64=${T(com.kubrabayrakci.AstronomyBlog.util.ImageUtility).getBase64ImageStringFromCompressedByte(editedPost.getImage())}">
+      <img class="post-image original" id="blah" style="width: 200px" th:src="${'data:image/jpeg;charset=utf-8;base64,' + base64}">
+      <span id="remove-image" style="cursor: pointer;">Remove Image</span>
+    </th:block>
+    <th:block th:if="${editedPost.getImage() == null}">
+      <img class="post-image" id="blah" style="width: 200px">
+    </th:block>
+
+    <h5>Description</h5>
+    <textarea th:field="*{description}" style="width: 70%; height: 100px" />
+
+    <h5>Content</h5>
+    <textarea th:field="*{body}" style="width: 70%; height: 250px" />
+    <div>
+      <button type="submit" class="btn btn-success">Edit Post</button>
+    </div>
+
+    <input type="hidden" th:field="*{id}">
+    <input type="hidden" th:field="*{dateCreated}">
+
+  </form>
+
+</th:block>
+
+
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en"
+      layout:decorate="~{mainLayout.html}">
+
+
+<th:block layout:fragment="content">
+
+  <div class="read-post-content">
+    <th:block th:if="${readPost.getImage() != null}"
+              th:with="base64=${T(com.kubrabayrakci.AstronomyBlog.util.ImageUtility).getBase64ImageStringFromCompressedByte(readPost.getImage())}">
+      <img class="post-image" th:src="${'data:image/jpeg;charset=utf-8;base64,' + base64}">
+    </th:block>
+    <h2 class="post-title" th:text="${readPost.title}"></h2>
+    <pre class="post-body" th:utext="${readPost.body}"></pre>
+  </div>
+
+</th:block>
+
+
+
+</html>

@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en"
-      layout:decorate="~{mainLayout.html}"
->
+      layout:decorate="~{mainLayout.html}">
 
 
 <th:block layout:fragment="content">
-    <h2>
-        <div sec:authorize="isAuthenticated()">
-            Welcome <b><span sec:authentication="name">Username</span></b> &nbsp;
-            <i><span sec:authentication="principal.authorities">Roles</span></i>
-        </div>
-    </h2>
 
-    <a target="_blank" href="https://apod.nasa.gov/apod/astropix.html?"> <button>Astronomy Picture Of The Day</button></a>
-    <div>
-        <div th:each="post:${allPosts}">
 
-            <h4 th:text="${post.getTitle()}"></h4>
-            <img th:src="@{${post.getPhotosImagePath()}}">
-            <p th:text="${post.description}"></p>
+    <div class="home-extra-container">
+        <a target="_blank"
+           href="https://apod.nasa.gov/apod/astropix.html?">
+            <button class="btn btn-success">Astronomy Picture Of The Day</button>
+        </a>
+    </div>
+    <div class="post-list col-7">
+        <div th:each="post, postIter :${allPosts}">
+            <div class="row no-gutters">
+                <div class="col-6">
+                    <th:block th:if="${post.getImage() != null}"
+                              th:with="base64=${T(com.kubrabayrakci.AstronomyBlog.util.ImageUtility).getBase64ImageStringFromCompressedByte(post.getImage())}">
+                        <img class="post-image" th:src="${'data:image/jpeg;charset=utf-8;base64,' + base64}">
+                    </th:block>
+                </div>
+                <div class="col-6 p-3">
+                    <a th:href="@{/readPost/__${post.id}__}"><h4 th:text="${post.getTitle()}"></h4></a>
+                    <p class="post-description" th:text="${post.description}"></p>
+                    <p class="post-date" th:text="${#temporals.format(post.dateCreated, 'MMMM dd, yyyy HH:mm')}"></p>
+                </div>
+            </div>
+            <hr th:unless="${postIter.last}" />
 
         </div>
     </div>

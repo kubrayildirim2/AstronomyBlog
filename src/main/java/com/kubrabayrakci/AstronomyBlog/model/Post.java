@@ -1,7 +1,6 @@
 package com.kubrabayrakci.AstronomyBlog.model;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -20,20 +19,12 @@ public class Post {
     @Column
     private String description;
 
-    @Column(nullable = true, length = 64)
-    private String image;
+    @Lob
+    @Column(name = "image", unique = false, nullable = true)
+    private Byte[] image;
 
     private LocalDateTime dateCreated;
 
-    public Post() {
-    }
-
-    @Transient
-    public String getPhotosImagePath() {
-        if (image == null || id == null) return null;
-
-        return "/post-image/" + id + "/" + image;
-    }
 
     public Long getId() {
         return id;
@@ -63,11 +54,11 @@ public class Post {
         return description;
     }
 
-    public String getImage() {
+    public Byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(Byte[] image) {
         this.image = image;
     }
 

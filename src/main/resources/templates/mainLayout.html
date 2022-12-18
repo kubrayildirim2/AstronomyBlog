@@ -15,34 +15,38 @@
 <nav class="navbar my-navbar-top navbar-light bg-light">
     <div class="logo-container">
         <a class="navbar-brand" th:href="@{/}">
-            <img th:src="@{/media/galaxy-icon.png}" width="30" height="30" alt="">
+            <img th:src="@{/media/app-logo.png}" width="55" height="55" alt="">
         </a>
     </div>
     <div class="title-middle-container">
         <a class="title-middle" th:href="@{/}">
-            <span>Astronomy Blog Home Page Example Title</span>
+            <span>Astro News</span>
         </a>
     </div>
     <div class="rightContainer">
         <div sec:authorize="isAuthenticated()">
             <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                <a class="btn btn-danger dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                    sec:authentication="name" aria-expanded="false">
                     Dropdown link
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
+                    <th:block sec:authorize="hasAuthority('ADMIN')">
+                        <a class="dropdown-item" href="/cms">Content Management</a>
+                    </th:block>
                     <a class="dropdown-item" href="#">Profile</a>
                     <a class="dropdown-item" href="#">Something</a>
                     <a class="dropdown-item" th:href="@{/logout}">Logout</a>
                 </div>
             </div>
         </div>
+
         <div sec:authorize="!isAuthenticated()">
-            <a class="sign-in-link" th:href="@{/login}">
+            <a class="btn btn-info sign-in-link" th:href="@{/login}">
                 <span>Log in</span>
             </a>
-            <a class="sign-in-link" th:href="@{/register}">
+            <a class="btn btn-warning sign-in-link" th:href="@{/register}">
                 <span>Sign up</span>
             </a>
         </div>
@@ -52,16 +56,16 @@
     <a class="down-navbar-title" th:href="@{/}">
         <span>Home</span>
     </a>
-    <a class="down-navbar-title" href="#">
+    <a class="down-navbar-title" th:href="@{/archive}">
         <span>Archive</span>
     </a>
-    <a class="down-navbar-title" href="#">
+    <a class="down-navbar-title" th:href="@{/about}">
         <span>About</span>
     </a>
-    <a class="down-navbar-title" href="#">
+    <a class="down-navbar-title" th:href="@{/planets}">
         <span>Planets</span>
     </a>
-    <a class="down-navbar-title" href="#">
+    <a class="down-navbar-title" th:href="@{/shop}">
         <span>Shop</span>
     </a>
 </nav>

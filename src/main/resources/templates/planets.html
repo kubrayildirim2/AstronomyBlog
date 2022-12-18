@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en"
-      layout:decorate="~{cmsLayout.html}"
->
+      layout:decorate="~{mainLayout.html}">
 
 
-<th:block layout:fragment="cmsContent">
+<th:block layout:fragment="content">
+    <div class="d-flex flex-column">
+        <h1>Some Planets</h1>
+        <p>Planets...</p>
+    </div>
 
 </th:block>
 

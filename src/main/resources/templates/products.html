@@ -7,15 +7,21 @@
 
 <th:block layout:fragment="cmsContent">
 
+  <div th:if="${#lists.isEmpty(allProducts)}">
+    There are no records.
+  </div>
   <div th:unless="${#lists.isEmpty(allProducts)}">
 
     <table class="table table-dark">
 
       <thead>
       <tr>
-        <td>id</td>
-        <td>title</td>
-        <td>price</td>
+        <td>Product Id</td>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Delete</td>
+        <td>Edit</td>
+        <td>Duplicate</td>
       </tr>
       </thead>
 
@@ -26,13 +32,18 @@
         <td th:text="${product.price}"></td>
 
         <td>
-          <a th:href="@{/cms/deleteProduct/__${product.getId()}__}">
-            <button>Delete</button>
+          <a  th:href="@{/cms/deleteProduct/__${product.getId()}__}">
+            <button class="btn btn-danger">Delete</button>
           </a>
         </td>
         <td>
-          <a th:href="@{/cms/editProduct/__${product.getId()}__}">
-            <button>Edit</button>
+          <a  th:href="@{/cms/editProduct/__${product.getId()}__}">
+            <button class="btn btn-primary">Edit</button>
+          </a>
+        </td>
+        <td>
+          <a  th:href="@{/cms/duplicateProduct/__${product.getId()}__}">
+            <button class="btn btn-warning">Duplicate</button>
           </a>
         </td>
 

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en"
+      layout:decorate="~{mainLayout.html}">
+
+
+<th:block layout:fragment="content">
+
+  <div class="d-flex flex-column">
+    <div th:each="post, postIter :${allPosts}">
+      <p class="post-date" th:text="${#temporals.format(post.dateCreated, 'MMMM dd, yyyy HH:mm')}"></p>
+      <a th:href="@{/readPost/__${post.id}__}"><h4 th:text="${post.getTitle()}"></h4></a>
+      <hr th:unless="${postIter.last}">
+    </div>
+  </div>
+</th:block>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en"
+      layout:decorate="~{mainLayout.html}">
+
+
+<th:block layout:fragment="content">
+
+  <div class="card-deck">
+    <th:block th:each="product, productIter : ${productList}">
+      <div class="card shopping-item">
+        <th:block th:if="${product.getImage() != null}"
+                  th:with="base64=${T(com.kubrabayrakci.AstronomyBlog.util.ImageUtility).getBase64ImageStringFromCompressedByte(product.getImage())}">
+          <img class="card-img-top" th:src="${'data:image/jpeg;charset=utf-8;base64,' + base64}" alt="Card image cap">
+        </th:block>
+        <div class="card-body">
+          <h5 class="card-title" th:text="${product.getName()}">Card title</h5>
+          <p class="card-text" th:text="${product.getDescription()}">
+            Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div style="margin-bottom: .5rem">
+            <span>$</span>
+            <span th:text="${product.getPrice()}"></span>
+          </div>
+          <a href="#" class="btn btn-danger">Add to Cart</a>
+        </div>
+      </div>
+    </th:block>
+  </div>
+</th:block>
+
+
+
+</html>

@@ -14,6 +14,10 @@ public class Product {
 
     private String description;
 
+    @Lob
+    @Column(name = "image", unique = false, nullable = true)
+    private Byte[] image;
+
     private Float price;
 
     public Product() {
@@ -49,5 +53,13 @@ public class Product {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public Byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(Byte[] image) {
+        this.image = image;
     }
 }

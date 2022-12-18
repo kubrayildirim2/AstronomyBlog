@@ -8,23 +8,26 @@
 <th:block layout:fragment="content">
   <div class="cmsContainer">
 
-    <h2> CMS PANEL </h2>
+    <h2>Content Management</h2>
 
-    <a th:href="@{/cms/create}">
-      <button class="btn btn-success">Create a new post</button>
-    </a>
+    <div class="cms-nav">
+      <a th:href="@{/cms/createPost}">
+        <button class="btn btn-success">Create a new post</button>
+      </a>
 
-    <a th:href="@{/cms/showpost}">
-      <button class="btn btn-success">Show all posts</button>
-    </a>
+      <a th:href="@{/cms/showAllPost}">
+        <button class="btn btn-success">Show all posts</button>
+      </a>
 
-    <a th:href="@{/cms/createProduct}">
-      <button class="btn btn-success">Create a new product</button>
-    </a>
+      <a th:href="@{/cms/createProduct}">
+        <button class="btn btn-primary">Create a new product</button>
+      </a>
 
-    <a th:href="@{/cms/showProducts}">
-      <button class="btn btn-success">Show all products</button>
-    </a>
+      <a th:href="@{/cms/showProducts}">
+        <button class="btn btn-primary">Show all products</button>
+      </a>
+    </div>
+
 
     <div class="cmsMainContent">
 
